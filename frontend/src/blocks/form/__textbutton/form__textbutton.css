@@ -1,0 +1,12 @@
+.form__textbutton {
+    display: block;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+  }
+  
+  .form__textbutton:hover {
+    opacity: .6;
+  }

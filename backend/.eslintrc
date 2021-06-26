@@ -1,0 +1,31 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "no-multiple-empty-lines": "warn",
+    "eol-last": "warn",
+    "semi": "warn",
+    "spellcheck/spell-checker": ["warn", {
+      "skipWords": [
+        "req",
+        "Validators",
+        "minlength",
+        "maxlength",
+        "mongodb",
+        "localhost",
+        "mestodb",
+        "middlewares",
+        "jsonwebtoken",
+        "signup",
+        "signin",
+        "msg",
+        "Joi",
+        "alphanum",
+        "uri",
+        "winston",
+        "cors"
+      ]
+    }]
+  },
+  "plugins": ["spellcheck"]
+}
