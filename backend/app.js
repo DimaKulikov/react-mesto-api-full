@@ -10,6 +10,8 @@ const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const joiValidator = require('./middlewares/joiValidator');
 
+const { PORT = 3000 } = process.env;
+
 // Creating a server
 const app = express();
 
@@ -43,7 +45,7 @@ app.use(errorLogger);
 app.use(errorHandler);
 
 // Starting a server
-app.listen(3000, () => {
+app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log('started successfully');
 });
