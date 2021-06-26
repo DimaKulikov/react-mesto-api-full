@@ -31,6 +31,11 @@ app.use(cookieParser());
 app.use(requestLogger);
 
 // Routes
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.post('/signin', joiValidator.login, login);
 app.post('/signup', joiValidator.signup, createUser);
 app.use(auth);
