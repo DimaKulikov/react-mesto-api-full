@@ -2,8 +2,8 @@
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
   
 ## Сервер  
-`IP-адрес:` [84.201.177.243]
+`IP-адрес:` 84.201.177.243
 
-`Фронтэнд:` [https://mesto.dima.nomoredomains.club/] 
+`Фронтэнд:` https://mesto.dima.nomoredomains.club/
 
-`Backend:` [https://api.mesto.dima.nomoredomains.monster/] 
+`Backend:` https://api.mesto.dima.nomoredomains.monster/
