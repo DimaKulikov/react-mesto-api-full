@@ -3,7 +3,6 @@ const ApiError = require('../utils/apiError');
 
 exports.getAllCards = (req, res, next) => {
   Card.find({})
-    .populate('owner')
     .sort({ createdAt: -1 })
     .then((cards) => res.send(cards))
     .catch(next);
@@ -13,8 +12,7 @@ exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   const owner = req.user._id;
   Card.create({ name, link, owner })
-    .then((createdCard) => createdCard.populate('owner').execPopulate())
-    .then((populatedCard) => res.send(populatedCard))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(ApiError.validation(err));
@@ -55,7 +53,6 @@ exports.putLike = (req, res, next) => {
     { new: true },
   )
     .orFail(ApiError.notFound('Карточка не найдена'))
-    .then((card) => card.populate('owner').execPopulate())
     .then((data) => res.send(data))
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -74,7 +71,6 @@ exports.deleteLike = (req, res, next) => {
     { new: true },
   )
     .orFail(ApiError.notFound('Карточка не найдена'))
-    .then((card) => card.populate('owner').execPopulate())
     .then((data) => res.send(data))
     .catch((err) => {
       if (err.name === 'CastError') {
