@@ -125,9 +125,7 @@ function App() {
       .signin(email, password)
       .then((res) => {
         localStorage.setItem('JWT', res.token)
-        setIsLoggedIn(true)
-        setCurrentUser(res.user)
-        history.push('/')
+        setIsLoggedIn(true)        
       })      
       .catch(console.error);
   }
@@ -175,7 +173,7 @@ function App() {
     }
   }, [history, setIsLoggedIn])
 
-  // fetch api data on mount or login
+  // fetch api data on login
   useEffect(() => {
     console.log('fetch user data and cards effect called')
     if (isLoggedIn) {
@@ -183,6 +181,7 @@ function App() {
         .then(([userData, cardsArray]) => {
           setCurrentUser(userData);
           setCards(cardsArray);
+          history.push('/')
         })
         .catch(console.error);
     }
