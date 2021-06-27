@@ -11,8 +11,8 @@ const {
 
 router.get('/', getAllCards);
 router.post('/', joiValidator.createCard, createCard);
-router.delete('/:cardId', joiValidator.deleteCard, deleteCard);
-router.put('/likes/:cardId', joiValidator.putLike, putLike);
-router.delete('/likes/:cardId', joiValidator.deleteLike, deleteLike);
+router.delete('/:cardId', joiValidator.cardId, deleteCard);
+router.put('/likes/:cardId', joiValidator.cardId, putLike);
+router.delete('/likes/:cardId', joiValidator.cardId, deleteLike);
 
 module.exports = router;

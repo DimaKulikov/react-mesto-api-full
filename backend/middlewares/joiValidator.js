@@ -21,7 +21,7 @@ exports.signup = (celebrate({
 
 exports.getUser = (celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().alphanum().length(24).required(),
+    userId: Joi.string().hex().length(24).required(),
   }),
 }));
 
@@ -45,20 +45,8 @@ exports.createCard = (celebrate({
   }),
 }));
 
-exports.deleteCard = (celebrate({
+exports.cardId = (celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().alphanum().length(24).required(),
-  }),
-}));
-
-exports.putLike = (celebrate({
-  params: Joi.object().keys({
-    cardId: Joi.string().alphanum().length(24).required(),
-  }),
-}));
-
-exports.deleteLike = (celebrate({
-  params: Joi.object().keys({
-    cardId: Joi.string().alphanum().length(24).required(),
+    cardId: Joi.string().hex().length(24).required(),
   }),
 }));
