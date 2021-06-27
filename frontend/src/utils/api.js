@@ -97,7 +97,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.mesto.dima.nomoredomains.monster'
+  baseUrl: process.env.NODE_ENV === 'production' ? 'https://api.mesto.dima.nomoredomains.monster' : 'http://localhost:3000'
 })
 
 export default api
