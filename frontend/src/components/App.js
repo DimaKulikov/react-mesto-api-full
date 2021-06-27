@@ -178,12 +178,14 @@ function App() {
   // fetch api data on mount or login
   useEffect(() => {
     console.log('fetch user data and cards effect called')
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, cardsArray]) => {
-        setCurrentUser(userData);
-        setCards(cardsArray);
-      })
-      .catch(console.error);
+    if (isLoggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([userData, cardsArray]) => {
+          setCurrentUser(userData);
+          setCards(cardsArray);
+        })
+        .catch(console.error);
+    }
   }, [isLoggedIn, setCurrentUser]);
 
   // change images with arrowkeys in image popup
