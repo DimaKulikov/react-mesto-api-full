@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const ApiError = require('../utils/apiError');
 
-router.all('/', (req, res) => {
-  res.status(404).send({ message: `Запрошенный URL ${req.originalUrl} не найден` });
+router.all('/', () => {
+  throw ApiError.notFound('Запрошенный URL не найден');
 });
 
 module.exports = router;
