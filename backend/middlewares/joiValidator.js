@@ -1,4 +1,5 @@
 const { Joi, celebrate } = require('celebrate');
+const { isUrl } = require('../utils/joi-methods');
 
 exports.login = (celebrate({
   body:
@@ -12,7 +13,7 @@ exports.signup = (celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().uri({ scheme: /https?/i }),
+    avatar: Joi.string().custom(isUrl, 'URL validation'),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
   }),
@@ -33,14 +34,14 @@ exports.updateUser = (celebrate({
 
 exports.updateAvatar = (celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().uri({ scheme: /https?/i }).required(),
+    avatar: Joi.string().custom(isUrl, 'URL validation').required(),
   }),
 }));
 
 exports.createCard = (celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30).required(),
-    link: Joi.string().uri({ scheme: /https?/i }).required(),
+    link: Joi.string().custom(isUrl, 'URL validation').required(),
   }),
 }));
 
