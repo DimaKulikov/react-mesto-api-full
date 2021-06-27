@@ -65,7 +65,7 @@ class Api {
 
   putLike(cardId) {
     this._getHeaders();
-    return fetch(this._baseUrl + '/cards/likes/' + cardId, {
+    return fetch(this._baseUrl + '/cards/' + cardId + '/likes', {
       headers: this._headers,
       method: 'PUT'
     })
@@ -74,7 +74,7 @@ class Api {
 
   deleteLike(cardId) {
     this._getHeaders();
-    return fetch(this._baseUrl + '/cards/likes/' + cardId, {
+    return fetch(this._baseUrl + '/cards/' + cardId + '/likes', {
       headers: this._headers,
       method: 'DELETE'
     })
