@@ -131,7 +131,6 @@ function App() {
   }
 
   function handleLogout() {
-    console.log('handleLogout called')
     setIsLoggedIn(false)
     setCurrentUser(defaultUser)
     localStorage.removeItem('JWT')
@@ -161,7 +160,6 @@ function App() {
    */
   // check jwt token in localStorage
   useEffect(() => {
-    console.log('check jwt effect called')
     const token = localStorage.getItem('JWT')
     if (token) {
       api.getUserInfo()
@@ -175,7 +173,6 @@ function App() {
 
   // fetch api data on login
   useEffect(() => {
-    console.log('fetch user data and cards effect called')
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([userData, cardsArray]) => {
