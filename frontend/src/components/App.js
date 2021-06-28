@@ -162,12 +162,8 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('JWT')
     if (token) {
-      api.getUserInfo()
-        .then((data) => {
-          setIsLoggedIn(true)
-          history.push('/')
-        })
-        .catch(err => console.error('Ошибка проверки токена авторизации:', err))
+      setIsLoggedIn(true)
+      history.push('/')
     }
   }, [history, setIsLoggedIn])
 
@@ -182,7 +178,7 @@ function App() {
         })
         .catch(console.error);
     }
-  }, [isLoggedIn, setCurrentUser]);
+  }, [isLoggedIn, setCurrentUser, history]);
 
   // change images with arrowkeys in image popup
   useEffect(() => {
