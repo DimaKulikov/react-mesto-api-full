@@ -40,11 +40,11 @@ const userSchema = new mongoose.Schema({
 userSchema.statics.findUserByCredentials = function findUserByCredentials(email, password) {
   return this.findOne({ email })
     .select('+password')
-    .orFail(ApiError.authentication('Неправильные почта или пароль'))
+    .orFail(ApiError.authentication())
     .then((user) => bcrypt.compare(password, user.password)
       .then((matched) => {
         if (!matched) {
-          throw ApiError.authentication('Неправильные почта или пароль');
+          throw ApiError.authentication();
         }
         return user;
       }));
